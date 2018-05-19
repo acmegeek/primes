@@ -22,21 +22,23 @@
   <![endif]-->
 
   <div class="nav">
-    <h1>Parallax Primes Redux</h1>
-    <div id="cellParams">
-      Cell Rows: <input name="cellRows" value="50"><br>
-      Cell Density: <input name="cellDensity" value="76"><br>
-      <button onclick="PPR.generate()">Generate!</button>
+    <div>
+      <h1>Parallax Primes Redux</h1>
+      <div id="cellParams">
+        Cell Rows: <input name="cellRows" value="50"><br>
+        Cell Density: <input name="cellDensity" value="76"><br>
+        <button onclick="PPR.generate()">Generate!</button>
+      </div>
     </div>
-    <hr>
-    <p>Original JavaScript version by <a href="http://www.gibney.de/parallax_primes" target="_blank">Marek Gibney</a>.</p>
-    <p>Shaun Gilchrist and Nova Spivack have discovered an interesting way to look at prime numbers <a href="http://www.novaspivack.com/science/we-have-discovered-a-new-pattern-in-the-prime-numbers-parallax-compression" target=_blank>here</a>.</p>
-    <p>I was inspired to use circles vs squares, and have them stack nicely. Also, have the variables more isolated to test. Also, it counts how many primes are within a pack, and assigns the color proportionately. This is still a work in progress.</p>
-
+    <div>
+      <p>Original JavaScript version by <a href="http://www.gibney.de/parallax_primes" target="_blank">Marek Gibney</a>.</p>
+      <p>Shaun Gilchrist and Nova Spivack have discovered an interesting way to look at prime numbers <a href="http://www.novaspivack.com/science/we-have-discovered-a-new-pattern-in-the-prime-numbers-parallax-compression" target=_blank>here</a>.</p>
+      <p>I was inspired to use circles vs squares, and have them stack nicely. Also, have the variables more isolated to test. Also, it counts how many primes are within a pack, and assigns the color proportionately. This is still a work in progress.</p>
+    </div>
 <!--     <a id="canvasLink" download><img id="canvasImg"></a> -->
   </div>
   <div class="content">
-    <svg id="svgCells" width=500 height=500></svg>
+    <svg id="svgCells" viewBox="0 0 500 500"></svg>
     <div id="cellDetails">Click a cell for details.</div>
   </div>
 

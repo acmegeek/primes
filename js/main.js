@@ -103,7 +103,7 @@ const PPR = (function () {
   	cellDensity = document.querySelector('#cellParams input[name=cellDensity]').value;
   	cellSize = width / cellRows;
     console.log('Generate!');
-	svg = SVG('svgCells').size(1000, 1000);
+	svg = SVG('svgCells').size(500, 500);
 	svg.clear();
   	currNum = 1;
   	totalPrimes = 0;

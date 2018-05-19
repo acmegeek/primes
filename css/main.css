@@ -100,7 +100,6 @@ textarea {
 body {
     margin: 0;
     padding: 0;
-    display: flex;
 }
 
 body * {
@@ -108,13 +107,19 @@ body * {
 }
 
 .nav {
-    width: 15rem; 
-    height: 100vh;
+    width: 100vw; 
+    height: 10rem;
     background-color: #555555;
     padding: 1rem;
     color: #FFF;
     font-family: Verdana, sans-serif;
     border-top-right-radius: 1rem;
+    display: flex;
+}
+
+.nav>div {
+    flex: 1;
+    overflow-y: overlay;
 }
 
 .nav a {
@@ -122,7 +127,6 @@ body * {
 }
 .nav h1 {
     font-size: 1rem;
-    margin: -0.25rem;
 }
 
 .nav p {
@@ -147,9 +151,9 @@ body * {
 }
 
 .content {
-    flex: 1;
+    width: 100vw;
     padding: 1rem;
-    height: 100vh;
+    height: calc(100vh - 10rem);
     overflow: overlay;
     position: relative;
     text-align: center;
@@ -161,11 +165,6 @@ body * {
 }
 
 .content #cellDetails {
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 33vh;
-    width: 10rem;
     background-color: #eee;
     font-family: monospace;
     font-size:  0.65rem;
