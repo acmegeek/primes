@@ -133,6 +133,13 @@ body * {
     
 }
 
+.nav #cellParams {
+    padding: 0.5rem;
+    font-family: monospace;
+    font-size:  0.75rem;
+    text-align: left;
+}
+
 .nav #canvasImg {
     width: 18vw;
     height: 18vw;
@@ -153,29 +160,15 @@ body * {
     width: 500px;
 }
 
-.content #cellParams {
-    position: absolute;
-    padding: 0.5rem;
-    top: 0;
-    left: 0;
-    height: 33vh;
-    width: 15rem;
-    background-color: #eee;
-    font-family: monospace;
-    font-size:  0.75rem;
-    overflow: overlay;
-    text-align: left;
-}
-
 .content #cellDetails {
     position: absolute;
     top: 0;
     right: 0;
     height: 33vh;
-    width: 15rem;
+    width: 10rem;
     background-color: #eee;
     font-family: monospace;
-    font-size:  0.5rem;
+    font-size:  0.65rem;
     overflow: overlay;
     text-align: left;
 }
