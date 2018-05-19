@@ -1,110 +1,52 @@
-
 <!doctype html>
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-    </style>
-    
-    <title>Parallax Primes Redux</title>
-  </head>
+<html class="no-js" lang="">
 
-  <body>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Parallax Primes Redux</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+  <!--[if lte IE 9]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+
+  <div class="nav">
     <h1>Parallax Primes Redux</h1>
+    <p>Original JavaScript version by <a href="http://www.gibney.de/parallax_primes" target="_blank">Marek Gibney</a>.</p>
+    <p>Shaun Gilchrist and Nova Spivack have discovered an interesting way to look at prime numbers <a href="http://www.novaspivack.com/science/we-have-discovered-a-new-pattern-in-the-prime-numbers-parallax-compression" target=_blank>here</a>.</p>
+    <p>I was inspired to use circles vs squares, and have them stack nicely. Also, have the variables more isolated to test. Also, it counts how many primes are within a pack, and assigns the color proportionately. This is still a work in progress.</p>
 
-    <div class=content>
-
-      <div class=description>
-        Original JavaScript version by <a href="http://www.gibney.de/parallax_primes" target="_blank">Marek Gibney</a>.<br>
-        <br>
-        Shaun Gilchrist and Nova Spivack have discovered an interesting way to look at prime numbers <a href="http://www.novaspivack.com/science/we-have-discovered-a-new-pattern-in-the-prime-numbers-parallax-compression" target=_blank>here</a>.<br>
-        <br>
-        I was inspired to use circles vs squares, and have them stack nicely. Also, have the variables more isolated to test. Also, it counts how many primes are within a pack, and assigns the color proportionately. This is still a work in progress.<br>
-      </div>
-
-      <textarea id=code style="width: 100%; height: 400px">
-      packs = {}
-      width = 1000;
-      packSize = 50;
-      defaultColor = '#FFFFFF';
-      rows = 50;
-      curNum = 1;
-      squareSize = 20;
-      padding = 0;
-      y = 1;
-      x = 0;
-
-      window.isPrime = function(n) {
-        for (let i = 2, s = Math.sqrt(n); i <= s; i++) {
-          if (n % i === 0) {
-          return false;
-          }
-        }
-        return n !== 1;
-      }
-
-      window.countPackPrimes = function() {
-        let myNum = curNum + x;
-        let packStart = myNum;
-        let packPrimes = 0;
-        for (let i = 0; i < packSize; i++) {
-          if (isPrime(myNum)) {
-            ++packPrimes
-          }
-          myNum += y;
-        }
-        packs[packStart + '-' + myNum] = [packPrimes, packSize];
-        return packPrimes / packSize;
-      }
-
-      window.drawLine = function() {
-        for (x = 0; x < y; x++) {
-          let packPrimePercent = countPackPrimes();
-          let dotColor = (255 - Math.ceil(packPrimePercent * 512));
-          <!-- console.log(packPrimePercent, dotColor, packPrimePercent > 0 ? 'rgb(' + dotColor + ', 0, 0)' : defaultColor); -->
-          ctx.fillStyle = packPrimePercent > 0 ? 'rgba(' + dotColor + ', 127, 127, 1)' : defaultColor;
-          ctx.beginPath();
-          ctx.arc(
-            (width / 2) + (squareSize * x) - (squareSize * y) / 2,
-            ((0.89 * squareSize) * y),
-            squareSize / 2,
-            0,
-            2 * Math.PI
-          );
-          ctx.fill();
-        }
-        curNum += packSize * y;
-        y++;
-        if (y < rows) {
-          setTimeout(drawLine, 10);
-        } else {
-          console.log(packs);
-        }
-      }
-
-      canvas = document.getElementById('canvas');
-      ctx = canvas.getContext('2d');
-      ctx.fillStyle = 'rgb(0, 0, 100)';
-      drawLine();
-      </textarea>
-
-      <div style="margin: 20px">
-        <button onclick="doit()">go</button>
-      </div>
-
-      <script>
-      function doit()
-      {
-       console.log("doing it");
-       code=document.querySelector("#code").value;
-
-       eval.call(window,code);
-      }
-      </script>
-
-      <canvas id=canvas width=1000 height=1000 style='border: 1px solid #ff0000'></canvas>
+    <hr>
+<!--     <a id="canvasLink" download><img id="canvasImg"></a> -->
+  </div>
+  <div class="content">
+    <div id="cellParams">
+      Cell Rows: <input name="cellRows" value="50"><br>
+      Cell Density: <input name="cellDensity" value="76"><br>
+      <button onclick="PPR.generate()">Generate!</button>
     </div>
-  </body>
+    <svg id="svgCells" width=500 height=500></svg>
+    <div id="cellDetails">Click a cell for details.</div>
+  </div>
+
+  <script src="js/vendor/modernizr-3.6.0.min.js"></script>
+  <script src="js/vendor/svg.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+
 </html>
