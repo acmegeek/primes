@@ -27,11 +27,11 @@
       <textarea id=code style="width: 100%; height: 400px">
       packs = {}
       width = 1000;
-      packSize = 432;
+      packSize = 50;
       defaultColor = '#FFFFFF';
-      rows = 200;
+      rows = 50;
       curNum = 1;
-      squareSize = 5;
+      squareSize = 20;
       padding = 0;
       y = 1;
       x = 0;
@@ -64,7 +64,7 @@
           let packPrimePercent = countPackPrimes();
           let dotColor = (255 - Math.ceil(packPrimePercent * 512));
           <!-- console.log(packPrimePercent, dotColor, packPrimePercent > 0 ? 'rgb(' + dotColor + ', 0, 0)' : defaultColor); -->
-          ctx.fillStyle = packPrimePercent > 0 ? 'rgba(' + dotColor + ', 127, 127, 1)' : defaultColor;
+          ctx.fillStyle = packPrimePercent > 0 ? 'rgba(' + dotColor + ', 255, 255, 1)' : defaultColor;
           ctx.beginPath();
           ctx.arc(
             (width / 2) + (squareSize * x) - (squareSize * y) / 2,
