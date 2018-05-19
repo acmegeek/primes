@@ -62,9 +62,9 @@
       window.drawLine = function() {
         for (x = 0; x < y; x++) {
           let packPrimePercent = countPackPrimes();
-          let dotColor = (255 - Math.ceil(packPrimePercent * 255));
+          let dotColor = (255 - Math.ceil(packPrimePercent * 512));
           <!-- console.log(packPrimePercent, dotColor, packPrimePercent > 0 ? 'rgb(' + dotColor + ', 0, 0)' : defaultColor); -->
-          ctx.fillStyle = packPrimePercent > 0 ? 'rgba(' + dotColor + ', 0, 0, 1)' : defaultColor;
+          ctx.fillStyle = packPrimePercent > 0 ? 'rgba(' + dotColor + ', 255, 255, 1)' : defaultColor;
           ctx.beginPath();
           ctx.arc(
             (width / 2) + (squareSize * x) - (squareSize * y) / 2,
